@@ -1,6 +1,6 @@
 # CertifyNodeInjection
- Node-aware certifiable robust model against node injection attack on node classification.
-
+Source code for paper under review:  
+Node-aware Bi-smoothing: Certified Robustness against Graph Injection Attacks
 
 ## Environment
 
