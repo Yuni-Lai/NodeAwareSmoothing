@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 #conda activate py37
-#cd ~/MyProjects/CertifyNodeInjection/03_RecommendCertify/
 
 #nohup bash run.sh > ./run.log 2>&1 &
 
