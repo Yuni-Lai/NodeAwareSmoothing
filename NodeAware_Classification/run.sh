@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 #conda activate py37
-#cd ~/MyProjects/CertifyNodeInjection/02_BlackboxSmoothing/
 
 #nohup bash run.sh > ./run.log 2>&1 &
-#nohup bash run.sh > ./run1.log 2>&1 &
-#nohup bash run.sh > ./run_certify.log 2>&1 &
 
 #datset=['cora', 'citeseer', 'pubmed']
 #mode = ['evasion', 'poisoning']
