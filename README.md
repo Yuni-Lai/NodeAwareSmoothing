@@ -1,5 +1,5 @@
 # CertifyNodeInjection
-Source code for paper under review:  
+Source codes for the paper:  
 Node-aware Bi-smoothing: Certified Robustness against Graph Injection Attacks
 
 ## Environment
@@ -20,4 +20,14 @@ nohup bash run.sh > ./run.log 2>&1 &
 or 
 ```bash
 python main.py -dataset 'citeseer' -p_e 0.8 -p_n 0.9 -n_smoothing 10000 -degree_budget 5 -certify_mode 'poisoning' -singleton 'exclude' -gpuID 0
+```
+
+## Citation
+```bash
+@article{lai2023node,
+  title={Node-aware Bi-smoothing: Certified Robustness against Graph Injection Attacks},
+  author={Lai, Yuni and Zhu, Yulin and Pan, Bailin and Zhou, Kai},
+  journal={IEEE Symposium on Security and Privacy},
+  year={2023}
+}
 ```
