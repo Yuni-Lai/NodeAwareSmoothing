@@ -58,16 +58,16 @@ parser.add_argument('-patience', type=int, default=30, help='patience for early 
 parser.add_argument('-epochs', type=int, default=1000, help='training epoch')
 # parser.add_argument('-epoch', type=int, default=100, help='training epoch')
 parser.add_argument('-save_model', action='store_true', default=True,help="save model")
-parser.add_argument('-model', type=str, default='GCN',choices=['GCN', 'GAT','APPNP'], help='GNN model')
+parser.add_argument('-model', type=str, default='GAT',choices=['GCN', 'GAT'], help='GNN model')
 parser.add_argument('-n_hidden', type=int, default=64, help='size of hidden layer')
 parser.add_argument('-drop', type=float, default=0.5, help='dropout rate')
 parser.add_argument('-weight_decay', type=float, default=1e-3, help='weight_decay rate')
 parser.add_argument('-n_per_class', type=int, default=50, help='sample numebr per class')
 parser.add_argument('-force_training', action='store_true', default=False,help="force training even if pretrained model exist")
 # Certify setting----------------------
-parser.add_argument('-certify_mode', type=str, default='poisoning',
+parser.add_argument('-certify_mode', type=str, default='evasion',
                     choices=['evasion', 'poisoning'])
-parser.add_argument('-singleton', type=str, default='exclude',
+parser.add_argument('-singleton', type=str, default='include',
                     choices=['include', 'exclude'],help='include or exclude singleton node in voting')
 parser.add_argument('-p_e', type=float, default=0.8, help='probability of deleting edges')
 parser.add_argument('-p_n', type=float, default=0.9, help='probability of deleting nodes')
@@ -130,14 +130,14 @@ node_degrees = get_degrees(adj)
 if args.model == 'GCN':
     model = SmoothGCN(in_channels=d, out_channels=nc, hidden_channels=args.n_hidden, dropout=args.drop,config=sample_config,device=args.device).to(args.device)
 elif args.model == 'GAT':
-    # divide the number of hidden units by the number of heads to match the overall number of paramters
-    model = GAT(in_channels=d, out_channels=nc, hidden_channels=args.n_hidden // 8,
-                k_heads=8, dropout=args.drop,config=sample_config,device=args.device).to(args.device)
-elif args.model == 'APPNP':
-    model = APPNPNet(n_features=d, n_classes=nc, n_hidden=args.n_hidden,
-                     k_hops=10, alpha=0.15, p_dropout=args.drop).to(args.device)
+    args.epochs = 10000
+    args.lr = 0.005
+    args.patience = 100
+    args.drop = 0.6
+    model = SmoothGAT(in_channels=d, out_channels=nc, hidden_channels=args.n_hidden//8, # divide the number of hidden units by the number of heads to match the overall number of paramters
+                      heads=8,dropout=args.drop,config=sample_config,device=args.device).to(args.device)
 else:
-    raise ValueError(f"choices=['GCN', 'GAT','APPNP']")
+    raise ValueError(f"choices=['GCN', 'GAT']")
 
 optimizer = optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
 

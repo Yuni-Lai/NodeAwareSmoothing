@@ -9,7 +9,7 @@
 #datset=['cora', 'citeseer', 'pubmed']
 #mode = ['evasion', 'poisoning']
 
-mode='poisoning'
+mode='evasion'
 singleton='include'
 ### grid search###
 #for tau in 2 4 6
