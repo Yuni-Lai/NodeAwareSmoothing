@@ -14,6 +14,9 @@ if report: "ResolvePackageNotFound:xxx", or "No matching distribution found for 
 
 
 ## Node-aware Bi-Smoothing
+The directory ./NodeAware_Classification is about general node classification tasks, such as Citeseer, Cora-ML, and PubMed datasets.   
+The directory ./NodeAware_Recommender is about the recommendation task.   
+
 ```bash
 nohup bash run.sh > ./run.log 2>&1 &
 ```
