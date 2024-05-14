@@ -1,5 +1,5 @@
 # CertifyNodeInjection
- certifying against node injection attack in recommeder system.
+ Certified robustness against node injection attack in recommender system.
 
 ### Our Node-aware Smoothing + PORE
 
