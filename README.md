@@ -5,6 +5,7 @@ Node-aware Bi-smoothing: Certified Robustness against Graph Injection Attacks
 ## Environment
 
 ```bash
+cd ./Environments
 conda env create -f py37.yml
 conda activate py37
 pip install -r py37.txt
