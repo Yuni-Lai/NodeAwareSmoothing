@@ -1,6 +1,6 @@
 # CertifyNodeInjection
 This is the official source codes for the paper:  
-Node-aware Bi-smoothing: Certified Robustness against Graph Injection Attacks
+Node-aware Bi-smoothing: Certified Robustness against Graph Injection Attacks (S&P2024)
 
 ## Environment
 
